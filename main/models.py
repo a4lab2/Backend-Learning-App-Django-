@@ -24,6 +24,9 @@ class CourseCategory(models.Model):
     class Meta:
         verbose_name_plural = ("Course Categories")
 
+    def __str__(self):
+        return self.title
+
 
 # Create your models here.
 class Course(models.Model):
@@ -31,6 +34,9 @@ class Course(models.Model):
     teacher=models.ForeignKey(Teacher,on_delete=models.CASCADE)
     title=models.CharField(max_length=100)
     description=models.TextField()
+    featured_img=models.ImageField(upload_to='course_imgs/')
+    techs=models.TextField()
+
     class Meta:
         verbose_name_plural = ("Courses")
 
