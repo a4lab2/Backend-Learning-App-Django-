@@ -10,4 +10,8 @@ urlpatterns = [
 
 
     path('category/', views.CategoryList.as_view()),
+
+    path('course/', views.CourseList.as_view()),
+    path('chapter/', views.ChapterList.as_view()),
+    path('teacher-course/<int:teacher_id>', views.TeacherCourseList.as_view()),
 ]

@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class Teacher(models.Model):
-
     full_name=models.CharField(max_length=100)
     email=models.CharField(max_length=100)
     password=models.CharField(max_length=100)
@@ -34,11 +33,24 @@ class Course(models.Model):
     teacher=models.ForeignKey(Teacher,on_delete=models.CASCADE)
     title=models.CharField(max_length=100)
     description=models.TextField()
-    featured_img=models.ImageField(upload_to='course_imgs/')
-    techs=models.TextField()
+    featured_img=models.ImageField(upload_to='course_imgs/',null=True)
+    techs=models.TextField(null=True)
 
     class Meta:
         verbose_name_plural = ("Courses")
+
+
+
+# Create your models here.
+class Chapter(models.Model):
+    course=models.ForeignKey(Course,on_delete=models.CASCADE)
+    title=models.CharField(max_length=100)
+    description=models.TextField()
+    video=models.FileField(upload_to='chapter_videos/',null=True)
+    remarks=models.TextField(null=True)
+
+    class Meta:
+        verbose_name_plural = ("4 Chapters")
 
 
 
